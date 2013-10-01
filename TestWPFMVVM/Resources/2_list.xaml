@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <DataTemplate x:Key="2_list">
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="{Binding Name}" FontSize="12" />
+            <TextBlock Text="{Binding ContentType}" FontSize="8" />
+        </StackPanel>
+    </DataTemplate>
+
+</ResourceDictionary>

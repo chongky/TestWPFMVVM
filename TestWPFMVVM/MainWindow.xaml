@@ -1,0 +1,85 @@
+﻿<Window x:Class="TestWPFMVVM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="500" Width="800" >
+
+    <Grid>
+
+        <TreeView Height="Auto" HorizontalAlignment="Left" Margin="0,40" Name="tvExplorer" VerticalAlignment="Stretch" Width="200" 
+                  ItemsSource="{Binding Contents}" >
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=ContentType}" Value="File">
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TreeView.ItemContainerStyle>
+
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <TextBlock Text="{Binding Name}"/>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+
+        <ListView Height="Auto" HorizontalAlignment="Stretch" Margin="200,40" Name="lstContents" VerticalAlignment="Stretch" Width="Auto" ItemsSource="{Binding ElementName=tvExplorer, Path=SelectedItem.Children}">
+            <!--<ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" FontSize="12" />
+                        <TextBlock Text="{Binding ContentType}" FontSize="8" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>-->
+        </ListView>
+
+        <StackPanel Height="40" HorizontalAlignment="Stretch" Margin="0" VerticalAlignment="Bottom" Orientation="Horizontal" Name="pnlSelected" DataContext="{Binding ElementName=tvExplorer, Path=SelectedItem}">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="{Binding Path=Name}" FontSize="12" Padding="1" />
+                <TextBlock Text="{Binding ContentType}" FontSize="8" />
+            </StackPanel>
+
+
+            <TextBlock Text="{Binding ChildrenCount}" Margin="10,0,0,0" />
+            <TextBlock Text=" items."/>
+
+        </StackPanel>
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="371,12,0,0" Name="cboView" VerticalAlignment="Top" Width="120" ItemsSource="{Binding ContentViews}" SelectionChanged="cboView_SelectionChanged" DisplayMemberPath="Name" SelectedValuePath="Key" SelectedIndex="0" />
+
+
+        <Label Content="View:" Height="28" HorizontalAlignment="Left" Margin="323,12,0,0" Name="label1" VerticalAlignment="Top" />
+        <ListView Height="Auto" HorizontalAlignment="Right" Margin="0,40" Name="lstDetail" VerticalAlignment="Stretch" Width="200" Padding="1" ItemsSource="{Binding ElementName=lstContents, Path=SelectedItem.Attributes}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" FontSize="9" />
+                            <TextBlock Text=": " FontSize="9"/>
+                            <TextBlock Text="{Binding Value}" FontSize="9" />
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <!--<ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>-->
+        </ListView>
+        <ListView Height="190" HorizontalAlignment="Left" Margin="250,186,0,0" Name="listView1" VerticalAlignment="Top" Width="254" ItemsSource="{Binding}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Name}" FontSize="9" />                        
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

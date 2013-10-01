@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="TestWPFMVVM.ViewModels.ContentTreeViewModel">
+    <Position X="0.5" Y="0.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AEAAgAAAAIAAAECAIAQAAAAAgAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>ViewModels\ContentTreeViewModel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Contents" />
+      <Property Name="Folders" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="TestWPFMVVM.ViewModels.ContentViewModel">
+    <Position X="3.5" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="TestWPFMVVM.ViewModels.ContentViewModel.SelectedContentChangedHandler" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ViewModels\ContentViewModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAgCAQAQAAgIEARAIAAGQAQQgAAAUAAAAAAQAAAAAAE=</HashCode>
+      <FileName>ViewModels\ContentViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
