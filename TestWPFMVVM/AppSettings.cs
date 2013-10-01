@@ -7,6 +7,7 @@ using TestWPFMVVM.ViewModels;
 
 // testing
 //testing branch
+// testing branch 2
 
 namespace TestWPFMVVM
 {
